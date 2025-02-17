@@ -1,16 +1,18 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Needed for scene management.
+using UnityEngine.SceneManagement; // Needed to reload the scene
 
 public class PlayerCollision : MonoBehaviour
 {
+    // This method is called when the player's collider enters a trigger collider
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collided object is tagged "Puddle"
+        // Check if the object we collided with is tagged "Puddle"
         if (other.CompareTag("Puddle"))
         {
-            Debug.Log("Player hit a puddle!");
+            Debug.Log("Game Over: Hit a puddle!");
+            print("enter");
 
-            // Restart the current scene (i.e., end the game).
+            // Reload the current scene to simulate game over
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
